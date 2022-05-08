@@ -8,13 +8,11 @@ namespace coup
     private:
         std::vector<std::string> _players;
     public:
-        Game(){}
-        std::string turn(){return "";}
-        std::string winner(){return "";}
-        std::vector<std::string> players(){
-            std::vector<std::string> p{"","","","","",""};
-            return p;
-        }
+        Game();
+        ~Game();
+        std::string turn();
+        std::string winner();
+        std::vector<std::string> players();
         
     };
 }

@@ -14,17 +14,8 @@ namespace coup
         ~Captain();
         void steal (Player assassin);
         void block (Player assassin);
+        std::string role(){return "Captain";}
     };
 
-    void Captain::steal (Player assassin){}
-    void Captain::block (Player assassin){}
-
-    Captain::Captain(Game game, std::string name) : Player(game, name)
-    {
-    }
-
-    Captain::~Captain()
-    {
-    }
 
 }

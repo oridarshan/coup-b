@@ -14,19 +14,9 @@ namespace coup
         ~Duke();
         void steal (Player assassin);
         void block (Player assassin);
-        void tax(){}
+        void tax();
+        std::string role(){return "Duke";}
     };
 
-    void Duke::steal (Player assassin){}
-    void Duke::block (Player assassin){}
-
-    // Duke::Duke(Game game, std::string name) : Player(game, name)
-    Duke::Duke(Game game, std::string name) : Player(game, name)
-    {
-    }
-
-    Duke::~Duke()
-    {
-    }
 
 }

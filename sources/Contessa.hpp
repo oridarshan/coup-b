@@ -13,16 +13,8 @@ namespace coup
         Contessa(Game game, std::string name);
         ~Contessa();
         void block (Player assassin);
+        std::string role(){return "Contessa";}
     };
 
-    void Contessa::block (Player assassin){}
-
-    Contessa::Contessa(Game game, std::string name) : Player(game, name)
-    {
-    }
-
-    Contessa::~Contessa()
-    {
-    }
 
 }
