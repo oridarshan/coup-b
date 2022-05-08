@@ -1,12 +1,18 @@
 #pragma once
+
 #include <string>
 #include <vector>
 namespace coup
 {
+    class Player;
     class Game
     {
     private:
-        std::vector<std::string> _players;
+        // friend class Player;
+        
+        bool _game_on;
+        std::vector <Player*> _players;
+        int _turn_id;
     public:
         Game();
         ~Game();
@@ -16,3 +22,4 @@ namespace coup
         
     };
 }
+#include "Player.hpp"
