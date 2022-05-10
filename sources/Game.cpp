@@ -12,7 +12,7 @@ namespace coup{
         // game ended and only 1 player left
         if (players().size() == 1)
         {
-            return _players.at(0)->name();
+            return players().at(0);
         }
         throw ("Game in progress / not started");
     }
