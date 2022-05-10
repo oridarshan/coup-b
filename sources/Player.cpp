@@ -2,7 +2,7 @@
 #include <iostream>
 namespace coup{
 
-    Player::Player(Game& game, std::string name): _game(game), _name(name),
+    Player::Player(Game& game, std::string name): _game(game), _name(std::move(name)),
                                                  _coins(0), _status(Status::alive)
     {
     if (_game.players().size() >= 6)
@@ -21,7 +21,6 @@ namespace coup{
         //trying to kill a dead player
         if (_status != Status::alive && st != Status::alive)
         {
-            std::cout << "Current status: " << _status << std::endl;
             throw ("can't kill the dead");
         }
         

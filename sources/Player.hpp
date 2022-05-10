@@ -7,6 +7,7 @@
 #include <string>
 namespace coup
 {
+    
     class Player
     {
     protected:

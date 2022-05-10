@@ -21,7 +21,7 @@ namespace coup{
         other.last_action().subject->add_coins(stolen_coins);
     }
 
-    Captain::Captain(Game& game, std::string name) : Player(game, name)
+    Captain::Captain(Game& game, std::string name) : Player(game, std::move(name))
     {
     }
 

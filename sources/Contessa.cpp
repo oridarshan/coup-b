@@ -16,7 +16,7 @@ namespace coup{
         
     }
 
-    Contessa::Contessa(Game& game, std::string name) : Player(game, name)
+    Contessa::Contessa(Game& game, std::string name) : Player(game, std::move(name))
     {
     }
 

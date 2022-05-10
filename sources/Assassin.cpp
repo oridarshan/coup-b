@@ -27,7 +27,7 @@ namespace coup{
         }
     }
 
-    Assassin::Assassin(Game& game, std::string name) : Player(game, name)
+    Assassin::Assassin(Game& game, std::string name) : Player(game, std::move(name))
     {
     }
 

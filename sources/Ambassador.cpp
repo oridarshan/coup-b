@@ -28,7 +28,7 @@ namespace coup{
         
     }
 
-    Ambassador::Ambassador(Game& game, std::string name) : Player(game, name)
+    Ambassador::Ambassador(Game& game, std::string name) : Player(game, std::move(name))
     {
     }
 
