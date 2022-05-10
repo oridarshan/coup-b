@@ -10,7 +10,7 @@ namespace coup{
     std::string Game::winner()
     {
         // game ended and only 1 player left
-        if (players().size() == 1)
+        if (players().size() == 1 && _game_on)
         {
             return players().at(0);
         }
