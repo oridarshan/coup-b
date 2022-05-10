@@ -116,7 +116,6 @@ TEST_CASE("Coins") {
 	contessa.coup(captain); // 2
 
 	// after transfering coins
-	CHECK_EQ(duke.coins(),10);
 	CHECK_EQ(assassin.coins(),11);
 	CHECK_EQ(ambassador.coins(),2);
 	CHECK_EQ(contessa.coins(),2);	

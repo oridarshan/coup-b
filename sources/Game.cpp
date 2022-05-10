@@ -10,7 +10,7 @@ namespace coup{
     std::string Game::winner()
     {
         // game ended and only 1 player left
-        if (!_game_on && _players.size() == 1)
+        if (players().size() == 1)
         {
             return _players[0]->name();
         }
@@ -20,7 +20,10 @@ namespace coup{
     {
         std::vector <std::string> res;
         for(Player* p : _players){
-            res.push_back((*p).name());
+            if (p->get_status() == Status::alive)
+            {
+                res.push_back((*p).name());
+            }
         }
         return res;
     }
@@ -28,6 +31,23 @@ namespace coup{
     void Game::add_player(Player* p)
     {
         _players.push_back(p);
+    }
+
+    void Game::activate_game()
+    {
+        if (!_game_on)
+        {
+            _game_on = true;
+        }
+    }
+
+    void Game::end_turn()
+    {
+        while (_players[(size_t)_turn_id]->get_status() != Status::alive)
+        {
+            _turn_id++;
+            _turn_id = _turn_id % (int)_players.size();
+        }
     }
 
     Game::Game()

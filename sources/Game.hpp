@@ -7,9 +7,7 @@ namespace coup
     class Player;
     class Game
     {
-    private:
-        // friend class Player;
-        
+    private:     
         bool _game_on;
         std::vector <Player*> _players;
         int _turn_id;
@@ -20,6 +18,8 @@ namespace coup
         std::string winner();
         std::vector<std::string> players();
         void add_player(Player* p);
+        void activate_game();
+        void end_turn();
 
     };
 }
