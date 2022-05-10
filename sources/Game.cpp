@@ -30,6 +30,10 @@ namespace coup{
 
     void Game::add_player(Player* p)
     {
+        if(_game_on)
+        {
+            throw ("you can't join midgame, come early next time");
+        }
         _players.push_back(p);
     }
 
