@@ -5,7 +5,7 @@ namespace coup{
     Player::Player(Game& game, std::string name): _game(game), _name(name),
                                                  _coins(0), _status(Status::alive)
     {
-    if (_game.players().size() > 6)
+    if (_game.players().size() >= 6)
     {
         throw ("max player count is 6");
     }
