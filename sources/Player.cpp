@@ -7,7 +7,7 @@ namespace coup{
     {
     if (_game.players().size() >= 6)
     {
-        throw ("max player count is 6");
+        throw std::logic_error("max player count is 6");
     }
         game.add_player(this);
     }
