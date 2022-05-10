@@ -16,7 +16,7 @@ namespace coup
         Status _status;
         LastAction _last_action;
 
-        void start_turn();
+        void start_turn(Action action);
     public:
         Player(Game& game, std::string name);
         ~Player();

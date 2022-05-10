@@ -4,7 +4,7 @@ namespace coup{
 
     void Assassin::coup(Player &other)
     {
-        start_turn();
+        start_turn(Action::coup);
         if (_coins < 3)
         {
             throw ("Not enough coins");

@@ -4,7 +4,7 @@ namespace coup{
     
     void Captain::steal (Player& other)
     {
-        start_turn();
+        start_turn(Action::steal);
         int stolen_coins = other.steal_coins(2);
         _coins += stolen_coins;
         _last_action.action = Action::steal;

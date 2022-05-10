@@ -12,7 +12,7 @@ namespace coup{
     }
     void Duke::tax()
     {
-        start_turn();
+        start_turn(Action::tax);
         _coins += 3;
         _last_action.action = Action::tax;
         _last_action.subject = this;
