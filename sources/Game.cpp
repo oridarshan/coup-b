@@ -25,6 +25,11 @@ namespace coup{
         return res;
     }
 
+    void Game::add_player(Player* p)
+    {
+        _players.push_back(p);
+    }
+
     Game::Game()
     {
         _game_on = false;

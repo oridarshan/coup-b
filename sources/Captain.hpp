@@ -10,7 +10,7 @@ namespace coup
     private:
 
     public:
-        Captain(Game game, std::string name);
+        Captain(Game& game, std::string name);
         ~Captain();
         void steal (Player assassin);
         void block (Player assassin);

@@ -19,7 +19,8 @@ namespace coup
         std::string turn();
         std::string winner();
         std::vector<std::string> players();
-        
+        void add_player(Player* p);
+
     };
 }
 #include "Player.hpp"

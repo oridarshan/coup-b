@@ -10,7 +10,7 @@ namespace coup
     private:
 
     public:
-        Contessa(Game game, std::string name);
+        Contessa(Game& game, std::string name);
         ~Contessa();
         void block (Player assassin);
         std::string role(){return "Contessa";}

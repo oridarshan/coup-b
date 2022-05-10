@@ -1,8 +1,9 @@
 #include "Player.hpp"
 namespace coup{
 
-    Player::Player(Game game, std::string name): game(game), _name(name)
+    Player::Player(Game& game, std::string name): game(game), _name(name)
         {
+            game.add_player(this);
         }
 
     Player::~Player()

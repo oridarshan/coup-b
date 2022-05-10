@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Player.hpp"
-#include "Game.hpp"
 #include <string>
 namespace coup
 {
@@ -10,7 +9,7 @@ namespace coup
     private:
 
     public:
-        Ambassador(Game game, std::string name);
+        Ambassador(Game& game, std::string name);
         ~Ambassador();
         void steal (Player assassin);
         void block (Player assassin);

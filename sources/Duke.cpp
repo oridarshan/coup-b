@@ -7,7 +7,7 @@ namespace coup{
     void Duke::tax(){}
 
     // Duke::Duke(Game game, std::string name) : Player(game, name)
-    Duke::Duke(Game game, std::string name) : Player(game, name)
+    Duke::Duke(Game& game, std::string name) : Player(game, name)
     {
     }
 

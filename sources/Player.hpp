@@ -14,7 +14,7 @@ namespace coup
     public:
         // Player(Game game, std::string name);
     public:
-        Player(Game game, std::string name);
+        Player(Game& game, std::string name);
         ~Player();
         std::string name() const {return _name;}
         void income();
