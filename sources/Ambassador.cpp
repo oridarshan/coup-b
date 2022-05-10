@@ -13,7 +13,16 @@ namespace coup{
         _game.end_turn();
     }
 
-    void Ambassador::block (Player& other){}
+    void Ambassador::block (Player& other)
+    {
+        if (other.last_action().action != Action::steal)
+        {
+            throw ("Ambassador can only block 'steal'");
+        }
+        int stolen_coins = other.steal_coins(2);
+        other.last_action().subject->add_coins(stolen_coins);
+        
+    }
 
     Ambassador::Ambassador(Game& game, std::string name) : Player(game, name)
     {

@@ -25,6 +25,7 @@ namespace coup
         std::string name() const {return _name;}
         void income();
         void foreign_aid();
+        const LastAction& last_action(){return _last_action;}
         virtual void coup(Player& other);
         virtual void block(Player& other) =0;
         virtual std::string role(){return "base Player (Should not print)";}
