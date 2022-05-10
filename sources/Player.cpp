@@ -53,6 +53,7 @@ namespace coup{
         }
         
         other.set_status(Status::dead);
+        _coins -= 7;
         _last_action.action = Action::coup;
         _last_action.subject = &other;
         _game.end_turn();
@@ -76,6 +77,8 @@ namespace coup{
     }
 
     void Player::add_coins(int n){_coins += n;}
+
+    void Player::get_turn(){_last_action.action = Action::in_turn;}
 
     void Player::start_turn(Action action){
         if (_game.players().size() > 6 || _game.players().size() < 2)

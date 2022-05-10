@@ -68,6 +68,7 @@ TEST_CASE("GAME SCENARIO 1") {
     CHECK_EQ(scenario1.players().size(), 4); // .. Player ONE returns to the game
     CHECK_THROWS(PlayerTWO.income()); // Its not Player TWO's turn, Keep in mind that Player one returns to the same order
     CHECK_EQ(PlayerONE.coins(), 6);
+    cout << "PlayerONE coins: " << PlayerONE.coins() << endl;
     PlayerFOUR.foreign_aid();
     CHECK_NOTHROW(PlayerONE.income());
     CHECK_EQ(PlayerONE.coins(), 7);
@@ -179,9 +180,6 @@ TEST_CASE("Assassination with more than 7 coins") {
            CHECK_NOTHROW( Players.at(i)->income());
         }
     }
-    cout << "****************  current turn:" << scenario4.turn() << "***********" << endl; 
-    cout << "****************  duke status:" << duke.get_status() << "***********" << endl; 
-    duke.set_status(Status::alive);
     CHECK_NOTHROW(assassin.coup(duke)); // Assassin can coup with 3 coins
     CHECK_EQ(assassin.coins(), 2); // The coup cost the assassin only 3 coins.
     CHECK_EQ(scenario4.players().size(), 2); // Player THREE is out of the game

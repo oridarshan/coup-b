@@ -43,6 +43,7 @@ namespace coup
          */
         void set_status(Status st);
         void add_coins(int n);
+        void get_turn();
 
         friend std::ostream& operator<< (std::ostream& output, const Player& p);
     };

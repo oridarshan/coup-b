@@ -48,6 +48,8 @@ namespace coup{
             _turn_id++;
             _turn_id = _turn_id % (int)_players.size();
         } while (_players.at((size_t)_turn_id)->get_status() != Status::alive);
+        // validate last action of the player now playing
+        _players.at((size_t)_turn_id)->get_turn();
     }
 
     Game::Game()

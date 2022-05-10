@@ -19,8 +19,8 @@ namespace coup{
         }
         else
         {
-            other.set_status(Status::assassinated);
-            _last_action.action = Action::assassinate;
+            other.set_status(Status::dead);
+            _last_action.action = Action::coup;
             _last_action.subject = &other;
             _coins-=7;
             _game.end_turn();
