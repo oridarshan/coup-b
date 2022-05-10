@@ -5,14 +5,14 @@ namespace coup{
     
     std::string Game::turn()
     {
-        return _players[(size_t)_turn_id]->name();
+        return _players.at((size_t)_turn_id)->name();
     }
     std::string Game::winner()
     {
         // game ended and only 1 player left
         if (players().size() == 1)
         {
-            return _players[0]->name();
+            return _players.at(0)->name();
         }
         throw ("Game in progress / not started");
     }
@@ -47,7 +47,7 @@ namespace coup{
         do {
             _turn_id++;
             _turn_id = _turn_id % (int)_players.size();
-        } while (_players[(size_t)_turn_id]->get_status() != Status::alive);
+        } while (_players.at((size_t)_turn_id)->get_status() != Status::alive);
     }
 
     Game::Game()
