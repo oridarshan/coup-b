@@ -6,6 +6,10 @@ namespace coup{
     void Ambassador::transfer(Player& from, Player& to)
     {
         start_turn(Action::transfer);
+        if (from.coins() == 0)
+        {
+            throw ("don't be an idiot, you can't transfer 0 coins.");
+        }
         int stolen_coins = from.steal_coins(1);
         to.add_coins(stolen_coins);
         _last_action.action = Action::transfer;
