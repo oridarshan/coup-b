@@ -5,7 +5,7 @@ namespace coup{
     Player::Player(Game& game, std::string name): _game(game), _name(std::move(name)),
                                                  _coins(0), _status(Status::alive)
     {
-    if (_game.players().size() >= 6)
+    if (_game.players().size() >= MAX_PLAYERS)
     {
         throw std::logic_error("max player count is 6");
     }
@@ -46,13 +46,13 @@ namespace coup{
     void Player::coup(Player& other)
     {
         start_turn(Action::coup);
-        if (_coins < 7)
+        if (_coins < COUP_COST)
         {
             throw ("Not enough coins");
         }
         
         other.set_status(Status::dead);
-        _coins -= 7;
+        _coins -= COUP_COST;
         _last_action.action = Action::coup;
         _last_action.subject = &other;
         _game.end_turn();
@@ -80,7 +80,7 @@ namespace coup{
     void Player::get_turn(){_last_action.action = Action::in_turn;}
 
     void Player::start_turn(Action action){
-        if (_game.players().size() > 6 || _game.players().size() < 2)
+        if (_game.players().size() > MAX_PLAYERS || _game.players().size() < MIN_PLAYERS)
         {
             throw ("number of player not right");
         }
@@ -89,7 +89,7 @@ namespace coup{
         {
             throw ("Not your turn!");
         }
-        if (_coins >= 10 && action != Action::coup)
+        if (_coins >= MAX_COINS && action != Action::coup)
         {
             throw ("you posses 10 coins, kill someone already");
         }

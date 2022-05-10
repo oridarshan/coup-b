@@ -5,16 +5,16 @@ namespace coup{
     void Assassin::coup(Player &other)
     {
         start_turn(Action::coup);
-        if (_coins < 3)
+        if (_coins < ASSASSIN_COUP_COST)
         {
             throw ("Not enough coins");
         }
-        if (_coins < 7)
+        if (_coins < COUP_COST)
         {
             other.set_status(Status::assassinated);
             _last_action.action = Action::assassinate;
             _last_action.subject = &other;
-            _coins-=3;
+            _coins-=ASSASSIN_COUP_COST;
             _game.end_turn();
         }
         else
@@ -22,7 +22,7 @@ namespace coup{
             other.set_status(Status::dead);
             _last_action.action = Action::coup;
             _last_action.subject = &other;
-            _coins-=7;
+            _coins-=COUP_COST;
             _game.end_turn();
         }
     }

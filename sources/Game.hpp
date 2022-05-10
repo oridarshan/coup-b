@@ -5,7 +5,9 @@
 namespace coup
 {
     class Player;
-    static const int MAX_PLAYERS = 7;
+    static const int MIN_PLAYERS = 2;
+    static const int MAX_PLAYERS = 6;
+    static const int ASSASSIN_COUP_COST = 3;
     static const int COUP_COST = 7;
     static const int MAX_COINS = 10;
     class Game

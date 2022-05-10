@@ -15,7 +15,7 @@ namespace coup
         std::string _name;
         int _coins;
         Status _status;
-        LastAction _last_action;
+        LastAction _last_action = {};
 
         void start_turn(Action action);
     public:
