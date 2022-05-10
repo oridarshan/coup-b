@@ -12,11 +12,14 @@ namespace coup{
         {
         }
 
-    void Player::kill()
+    void Player::set_status(Status st)
     {
-        if (_status == Status::alive){_status = Status::murdered;}
-        if (_status == Status::murdered){_status = Status::dead;}
-        if (_status == Status::dead){throw ("Already dead");}
+        if (_status != Status::alive)
+        {
+            throw ("can't kill the dead");
+        }
+        
+        _status = st;
     }
 
     void Player::income()
@@ -38,12 +41,36 @@ namespace coup{
     void Player::coup(Player& other)
     {
         start_turn();
-        other.kill();
+        if (_coins < 7)
+        {
+            throw ("Not enough coins");
+        }
+        
+        other.set_status(Status::dead);
         _last_action.action = Action::coup;
         _last_action.subject = &other;
         _game.end_turn();
     }
+
     int Player::coins() const {return _coins;}
+    
+    int Player::steal_coins(int n)
+    {
+        int stolen_coins = 0;
+        for (size_t i = 0; i < n; i++)
+        {
+            if (_coins != 0)
+            {
+                stolen_coins++;
+                _coins--;
+            }
+            
+        }
+        return stolen_coins;
+    }
+
+    void Player::add_coins(int n){_coins += n;}
+
     void Player::start_turn(){
         if (_game.players().size() > 6 || _game.players().size() < 2)
         {

@@ -18,8 +18,6 @@ namespace coup
 
         void start_turn();
     public:
-        // Player(Game game, std::string name);
-    public:
         Player(Game& game, std::string name);
         ~Player();
 
@@ -28,9 +26,22 @@ namespace coup
         void income();
         void foreign_aid();
         virtual void coup(Player& other);
+        virtual void block(Player& other) =0;
         virtual std::string role(){return "base Player (Should not print)";}
         int coins() const;
-        void kill();
+        /**
+         * @brief steal n coin, or less if not possible
+         * 
+         * @param n 
+         * @return int 
+         */
+        int steal_coins(int n);
+        /**
+         * @brief update status parameter 
+         * 
+         */
+        void set_status(Status st);
+        void add_coins(int n);
 
         friend std::ostream& operator<< (std::ostream& output, const Player& p);
     };

@@ -12,8 +12,8 @@ namespace coup
     public:
         Assassin(Game& game, std::string name);
         ~Assassin();
-        void steal (Player assassin);
-        void block (Player assassin);
+        void coup(Player &other);
+        void block(Player& other){throw ("Assassin can't block");}
         std::string role(){return "Assassin";}
     };
 

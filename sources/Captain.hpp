@@ -12,8 +12,8 @@ namespace coup
     public:
         Captain(Game& game, std::string name);
         ~Captain();
-        void steal (Player assassin);
-        void block (Player assassin);
+        void steal (Player& other);
+        void block (Player& other);
         std::string role(){return "Captain";}
     };
 

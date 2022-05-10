@@ -12,7 +12,7 @@ namespace coup
     public:
         Contessa(Game& game, std::string name);
         ~Contessa();
-        void block (Player assassin);
+        void block(Player& other);
         std::string role(){return "Contessa";}
     };
 

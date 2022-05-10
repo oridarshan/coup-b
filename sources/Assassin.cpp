@@ -1,9 +1,28 @@
 #include "Assassin.hpp"
 
 namespace coup{
-    
-    void Assassin::steal (Player assassin){}
-    void Assassin::block (Player assassin){}
+
+    void Assassin::coup(Player &other)
+    {
+        start_turn();
+        if (_coins < 3)
+        {
+            throw ("Not enough coins");
+        }
+        if (_coins < 7)
+        {
+            other.set_status(Status::assassinated);
+            _last_action.action = Action::assassinate;
+            _last_action.subject = &other;
+            _coins-=3;
+            _game.end_turn();
+        }
+        other.set_status(Status::assassinated);
+        _last_action.action = Action::assassinate;
+        _last_action.subject = &other;
+        _coins-=7;
+        _game.end_turn();
+    }
 
     Assassin::Assassin(Game& game, std::string name) : Player(game, name)
     {

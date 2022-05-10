@@ -12,8 +12,7 @@ namespace coup
     public:
         Duke(Game& game, std::string name);
         ~Duke();
-        void steal (Player assassin);
-        void block (Player assassin);
+        void block(Player& other);
         void tax();
         std::string role(){return "Duke";}
     };
