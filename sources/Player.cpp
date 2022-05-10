@@ -18,8 +18,10 @@ namespace coup{
 
     void Player::set_status(Status st)
     {
-        if (_status != Status::alive)
+        //trying to kill a dead player
+        if (_status != Status::alive && st != Status::alive)
         {
+            std::cout << "Current status: " << _status << std::endl;
             throw ("can't kill the dead");
         }
         

@@ -179,6 +179,9 @@ TEST_CASE("Assassination with more than 7 coins") {
            CHECK_NOTHROW( Players.at(i)->income());
         }
     }
+    cout << "****************  current turn:" << scenario4.turn() << "***********" << endl; 
+    cout << "****************  duke status:" << duke.get_status() << "***********" << endl; 
+    duke.set_status(Status::alive);
     CHECK_NOTHROW(assassin.coup(duke)); // Assassin can coup with 3 coins
     CHECK_EQ(assassin.coins(), 2); // The coup cost the assassin only 3 coins.
     CHECK_EQ(scenario4.players().size(), 2); // Player THREE is out of the game
