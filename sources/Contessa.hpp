@@ -7,13 +7,11 @@ namespace coup
 {
     class Contessa : public Player
     {
-    private:
-
     public:
         Contessa(Game& game, std::string name);
         ~Contessa();
-        void block(Player& other);
-        std::string role(){return "Contessa";}
+        void block(Player& other); // block assassin's special coup
+        std::string role() const {return "Contessa";}
     };
 
 

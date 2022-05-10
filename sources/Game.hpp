@@ -20,11 +20,22 @@ namespace coup
     public:
         Game();
         ~Game();
-        std::string turn() const;
-        std::string winner() const;
+        std::string turn() const;//return the name of the player that should play next
+        std::string winner() const;//return name of the winner if game ended
+
+        /**
+         * @brief return vector with name of active players
+         * 
+         * @return std::vector<std::string> 
+         */
         std::vector<std::string> players() const;
         void add_player(Player* p);
-        void activate_game();
+        void activate_game(){_game_on = true;}
+
+        /**
+         * @brief end current turn and find next player to play
+         * 
+         */
         void end_turn();
 
     };

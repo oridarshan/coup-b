@@ -37,14 +37,6 @@ namespace coup{
         _players.push_back(p);
     }
 
-    void Game::activate_game()
-    {
-        if (!_game_on)
-        {
-            _game_on = true;
-        }
-    }
-
     void Game::end_turn()
     {
         // next ALIVE player

@@ -7,7 +7,7 @@ namespace coup{
     {
     if (_game.players().size() >= MAX_PLAYERS)
     {
-        throw std::logic_error("max player count is 6");
+        throw std::runtime_error("max player count is 6");
     }
         game.add_player(this);
     }
@@ -57,8 +57,6 @@ namespace coup{
         _last_action.subject = &other;
         _game.end_turn();
     }
-
-    int Player::coins() const {return _coins;}
     
     int Player::steal_coins(int n)
     {
@@ -74,10 +72,6 @@ namespace coup{
         }
         return stolen_coins;
     }
-
-    void Player::add_coins(int n){_coins += n;}
-
-    void Player::get_turn(){_last_action.action = Action::IN_TURN;}
 
     void Player::start_turn(Action action){
         if (_game.players().size() > MAX_PLAYERS || _game.players().size() < MIN_PLAYERS)

@@ -6,15 +6,13 @@ namespace coup
 {
     class Ambassador : public Player
     {
-    private:
-
     public:
         Ambassador(Game& game, std::string name);
         ~Ambassador();
         void steal (Player& other);
         void block (Player& other);
         void transfer(Player& from, Player& to);
-        std::string role(){return "Ambassador";}
+        std::string role() const {return "Ambassador";}
     };
 
 }
