@@ -3,11 +3,11 @@
 
 namespace coup{
     
-    std::string Game::turn()
+    std::string Game::turn() const
     {
         return _players.at((size_t)_turn_id)->name();
     }
-    std::string Game::winner()
+    std::string Game::winner() const
     {
         // game ended and only 1 player left
         if (players().size() == 1 && _game_on)
@@ -16,11 +16,11 @@ namespace coup{
         }
         throw ("Game in progress / not started");
     }
-    std::vector<std::string> Game::players()
+    std::vector<std::string> Game::players() const
     {
         std::vector <std::string> res;
         for(Player* p : _players){
-            if (p->get_status() == Status::alive)
+            if (p->get_status() == Status::ALIVE)
             {
                 res.push_back((*p).name());
             }
@@ -47,11 +47,11 @@ namespace coup{
 
     void Game::end_turn()
     {
-        // next alive player
+        // next ALIVE player
         do {
             _turn_id++;
             _turn_id = _turn_id % (int)_players.size();
-        } while (_players.at((size_t)_turn_id)->get_status() != Status::alive);
+        } while (_players.at((size_t)_turn_id)->get_status() != Status::ALIVE);
         // validate last action of the player now playing
         _players.at((size_t)_turn_id)->get_turn();
     }

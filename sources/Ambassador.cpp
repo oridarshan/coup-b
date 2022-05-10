@@ -5,21 +5,21 @@ namespace coup{
     
     void Ambassador::transfer(Player& from, Player& to)
     {
-        start_turn(Action::transfer);
+        start_turn(Action::TRANSFER);
         if (from.coins() == 0)
         {
             throw ("don't be an idiot, you can't transfer 0 coins.");
         }
         int stolen_coins = from.steal_coins(1);
         to.add_coins(stolen_coins);
-        _last_action.action = Action::transfer;
+        _last_action.action = Action::TRANSFER;
         _last_action.subject = this;
         _game.end_turn();
     }
 
     void Ambassador::block (Player& other)
     {
-        if (other.last_action().action != Action::steal)
+        if (other.last_action().action != Action::STEAL)
         {
             throw ("Ambassador can only block 'steal'");
         }

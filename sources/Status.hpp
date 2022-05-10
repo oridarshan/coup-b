@@ -1,5 +1,5 @@
 #pragma once
 namespace coup
 {
-    enum Status{alive, assassinated, dead};
+    enum Status{ALIVE, ASSASSINATED, DEAD};
 }

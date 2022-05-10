@@ -4,7 +4,7 @@ namespace coup{
     
     void Duke::block(Player& other)
     {
-        if (other.last_action().action != Action::forien_aid)
+        if (other.last_action().action != Action::FOREIGN_AID)
         {
             throw ("Duke can only block 'forien_aid'");
         }
@@ -12,9 +12,9 @@ namespace coup{
     }
     void Duke::tax()
     {
-        start_turn(Action::tax);
+        start_turn(Action::TAX);
         _coins += 3;
-        _last_action.action = Action::tax;
+        _last_action.action = Action::TAX;
         _last_action.subject = this;
         _game.end_turn();
     }

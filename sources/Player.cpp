@@ -3,7 +3,7 @@
 namespace coup{
 
     Player::Player(Game& game, std::string name): _game(game), _name(std::move(name)),
-                                                 _coins(0), _status(Status::alive)
+                                                 _coins(0), _status(Status::ALIVE)
     {
     if (_game.players().size() >= MAX_PLAYERS)
     {
@@ -19,7 +19,7 @@ namespace coup{
     void Player::set_status(Status st)
     {
         //trying to kill a dead player
-        if (_status != Status::alive && st != Status::alive)
+        if (_status != Status::ALIVE && st != Status::ALIVE)
         {
             throw ("can't kill the dead");
         }
@@ -29,31 +29,31 @@ namespace coup{
 
     void Player::income()
     {
-        start_turn(Action::income);
+        start_turn(Action::INCOME);
         _coins++;
-        _last_action.action = Action::income;
+        _last_action.action = Action::INCOME;
         _last_action.subject = this;
         _game.end_turn();
     }
     void Player::foreign_aid()
     {
-        start_turn(Action::forien_aid);
+        start_turn(Action::FOREIGN_AID);
         _coins+=2;
-        _last_action.action = Action::forien_aid;
+        _last_action.action = Action::FOREIGN_AID;
         _last_action.subject = this;
         _game.end_turn();
     }
     void Player::coup(Player& other)
     {
-        start_turn(Action::coup);
+        start_turn(Action::COUP);
         if (_coins < COUP_COST)
         {
             throw ("Not enough coins");
         }
         
-        other.set_status(Status::dead);
+        other.set_status(Status::DEAD);
         _coins -= COUP_COST;
-        _last_action.action = Action::coup;
+        _last_action.action = Action::COUP;
         _last_action.subject = &other;
         _game.end_turn();
     }
@@ -77,7 +77,7 @@ namespace coup{
 
     void Player::add_coins(int n){_coins += n;}
 
-    void Player::get_turn(){_last_action.action = Action::in_turn;}
+    void Player::get_turn(){_last_action.action = Action::IN_TURN;}
 
     void Player::start_turn(Action action){
         if (_game.players().size() > MAX_PLAYERS || _game.players().size() < MIN_PLAYERS)
@@ -89,7 +89,7 @@ namespace coup{
         {
             throw ("Not your turn!");
         }
-        if (_coins >= MAX_COINS && action != Action::coup)
+        if (_coins >= MAX_COINS && action != Action::COUP)
         {
             throw ("you posses 10 coins, kill someone already");
         }

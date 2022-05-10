@@ -4,7 +4,7 @@ namespace coup
 {
     class Player;
 
-    enum Action{income, forien_aid, coup, block, transfer, tax, steal, assassinate, in_turn};
+    enum Action{INCOME, FOREIGN_AID, COUP, TRANSFER, TAX, STEAL, ASSASSINATE, IN_TURN};
 
     struct LastAction
     {

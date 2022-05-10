@@ -10,6 +10,7 @@ namespace coup
     static const int ASSASSIN_COUP_COST = 3;
     static const int COUP_COST = 7;
     static const int MAX_COINS = 10;
+
     class Game
     {
     private:     
@@ -19,9 +20,9 @@ namespace coup
     public:
         Game();
         ~Game();
-        std::string turn();
-        std::string winner();
-        std::vector<std::string> players();
+        std::string turn() const;
+        std::string winner() const;
+        std::vector<std::string> players() const;
         void add_player(Player* p);
         void activate_game();
         void end_turn();

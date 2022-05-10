@@ -4,16 +4,16 @@ namespace coup{
     
     void Captain::steal (Player& other)
     {
-        start_turn(Action::steal);
+        start_turn(Action::STEAL);
         int stolen_coins = other.steal_coins(2);
         _coins += stolen_coins;
-        _last_action.action = Action::steal;
+        _last_action.action = Action::STEAL;
         _last_action.subject = &other;
         _game.end_turn();
     }
     void Captain::block (Player& other)
     {
-        if (other.last_action().action != Action::steal)
+        if (other.last_action().action != Action::STEAL)
         {
             throw ("Captain can only block 'steal'");
         }
