@@ -41,7 +41,7 @@ int playerEncode(string player){
 
 int main(){
     const int LOGIC_ERROR = 42;
-    // lower numbers - harder game
+    // lower numbers - harder game (special actions happen in 1/LEVEL chance)
     const int DIFFICULTY_LEVEL = 4;
     cout << "WELCOME!\nCoup Game.\nYou are an assassin, the best in your country, "
 "your mission is to eliminate everyone in the castle, and free the country!\n"
