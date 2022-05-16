@@ -67,7 +67,9 @@ int main(){
 "determined by your financial status.\n If you have less than 7 coins, you will be able "
 "to wound a target fatally. The wounded target will die after a round, unless the Contessa "
 "will save him.\n If you posses 7 coins or more - you will execute the perfect operation. "
-"It may be costly, at 7 coins, but this time your target is completly dead.\n\n"
+"It may be costly, at 7 coins, but this time your target is completly dead.\n"
+"Watch out! when one of the players reaches 10 coin, they will bribe your allies and "
+"execute you for sure!\n"
 "Good luck!" << endl;
     Game game{};
 	Assassin assassin{game, "You"};
@@ -111,6 +113,7 @@ int main(){
         this_thread::sleep_for(chrono::seconds(2));
         switch (playerEncode(game.turn()))
         {
+        //Your turn
         case 1:{
             int curr_action = 0;
             if (assassin.coins() >= 10)
@@ -182,11 +185,13 @@ int main(){
             }
             break;
         }
+        // Duke's turn
         case 2:{
             if (duke.coins() >= 10)
             {
                 duke.coup(assassin);
                 cout << " You have been executed." << endl;
+                game_on = false;
                 break;
             }
             
@@ -198,6 +203,7 @@ int main(){
                 {
                     duke.block(assassin);
                     cout << "The Duke blocked your foreign aid" << endl;
+                    break;
                 }
                 catch(...){}
             }
@@ -208,17 +214,23 @@ int main(){
                 {
                     duke.tax();
                     cout << "Duke performed 'tax' and got 3 coins" << endl;
+                    break;
                 }
                 else
                 {
                     int no_coup = rand()%DIFFICULTY_LEVEL;
                     if (!no_coup)
                     {
-                        try{duke.coup(assassin);
-                            cout << " You have been executed." << endl;}
+                        try{
+                            duke.coup(assassin);
+                            cout << " You have been executed." << endl;
+                            game_on = false;
+                            break;
+                        }
                         catch(...){
                             duke.income();
                             cout << "Duke performed 'income'" << endl;
+                            break;
                         }
                     }
                     else{
@@ -229,11 +241,13 @@ int main(){
             }
             break;
         }
+        // Contessa's turn
         case 3:{
             if (contessa.coins() >= 10)
             {
                 contessa.coup(assassin);
                 cout << " You have been executed." << endl;
+                game_on = false;
                 break;
             }
             int no_block = rand()%DIFFICULTY_LEVEL;
@@ -244,6 +258,7 @@ int main(){
                 {
                     contessa.block(assassin);
                     cout << "Contessa revived the dead" << endl;
+                    break;
                 }
                 catch(...){}
             }
@@ -253,10 +268,13 @@ int main(){
                 if (!no_coup)
                 {
                     try{contessa.coup(assassin);
-                        cout << " You have been executed." << endl;}
+                        cout << " You have been executed." << endl;
+                        game_on = false;
+                        break;}
                     catch(...){
                         contessa.income();
                         cout << "Contessa performed 'income'" << endl;
+                        break;
                     }
                 }
                 else{
@@ -266,11 +284,13 @@ int main(){
             }
             break;
         }
+        // Ambassador's turn
         case 4:{
             if (ambassador.coins() >= 10)
             {
                 ambassador.coup(assassin);
                 cout << " You have been executed." << endl;
+                game_on = false;
                 break;
             }
             int no_transfer = rand()%DIFFICULTY_LEVEL;
@@ -281,6 +301,7 @@ int main(){
                 {
                     ambassador.transfer(assassin, duke);
                     cout << "The Ambassador took your coin and gave it to the Duke!" << endl;
+                    break;
                 }
                 catch(...){}
             }
@@ -290,10 +311,13 @@ int main(){
                 if (!no_coup)
                 {
                     try{ambassador.coup(assassin);
-                        cout << " You have been executed." << endl;}
+                        cout << " You have been executed." << endl;
+                        game_on = false;
+                        break;}
                     catch(...){
                         ambassador.income();
                         cout << "Ambassador performed 'income'" << endl;
+                        break;
                     }
                 }
                 else{
@@ -303,11 +327,13 @@ int main(){
             }
             break;
         }
+        // Captain's turn
         case 5:{
             if (captain.coins() >= 10)
             {
                 captain.coup(assassin);
                 cout << " You have been executed." << endl;
+                game_on = false;
                 break;
             }
             int no_steal = rand()%DIFFICULTY_LEVEL;
@@ -318,6 +344,7 @@ int main(){
                 {
                     captain.steal(assassin);
                     cout << "The Captain took some of your coins!" << endl;
+                    break;
                 }
                 catch(...){}
             }
@@ -327,7 +354,9 @@ int main(){
                 if (!no_coup)
                 {
                     try{captain.coup(assassin);
-                        cout << " You have been executed." << endl;}
+                        cout << " You have been executed." << endl;
+                        game_on = false;
+                        break;}
                     catch(...){
                         captain.income();
                         cout << "Captain performed 'income'" << endl;
@@ -343,6 +372,8 @@ int main(){
         default:{
             return LOGIC_ERROR;}
         }
+        cout << endl;
+        this_thread::sleep_for(chrono::seconds(1));
     }
     return 0;
 }
